@@ -2,9 +2,8 @@ name: Otomatik Gunluk Video
 
 on:
   schedule:
-    # Her gün Türkiye saati ile sabah 09:00'da çalışır (UTC 06:00)
     - cron: '0 6 * * *'
-  workflow_dispatch: # İstersen 'Actions' sekmesinden el ile de çalıştırabilirsin
+  workflow_dispatch:
 
 jobs:
   video-uret:
@@ -17,6 +16,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
+
+      - name: Gerekli Python Kutuphanelerini Yukle
+        run: |
+          pip install gTTS
 
       - name: FFmpeg Aracini Yukle
         run: |
